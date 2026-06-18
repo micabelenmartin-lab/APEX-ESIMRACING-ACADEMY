@@ -116,6 +116,7 @@ nav {
   -webkit-clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
+  pointer-events: none; /* CORRECCIÓN: Permite que los eventos de mouse traspasen al contenedor .hero */
 }
 
 .hero-img-1, .hero-img-2 {
@@ -126,14 +127,14 @@ nav {
 }
 
 .hero-img-1 {
-  background-image: url('image/HERO 1.png');
+  background-image: url('image/HERO1.png'); /* CORRECCIÓN: Ruta de archivo corregida sin espacios */
   z-index: 1;
   opacity: 1;
 }
 
 /* Se cambia la transición a una muy rápida para el efecto parpadeo caótico */
 .hero-img-2 {
-  background-image: url('image/HERO 2.png');
+  background-image: url('image/HERO2.png'); /* CORRECCIÓN: Ruta de archivo corregida sin espacios */
   z-index: 2;
   opacity: 0;
   transition: opacity 0.05s steps(2, start);
