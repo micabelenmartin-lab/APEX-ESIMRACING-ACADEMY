@@ -36,6 +36,7 @@
     height: 64px;
     background: rgba(10,10,10,.88);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
 
@@ -104,14 +105,13 @@
     100%{ transform: translateX(60%);  opacity: 0; }
   }
 
-  /* Extra speed lines via spans */
   .speed-line {
     position: absolute; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(170,255,0,.05), transparent);
     animation: speedline 2.4s ease-out infinite;
   }
 
-  /* Diagonal accent bar con imágenes integradas */
+  /* Diagonal con rutas corregidas basadas en tu GitHub */
   .hero-diagonal {
     position: absolute; right: -60px; top: 0; bottom: 0;
     width: 48%;
@@ -120,7 +120,6 @@
     overflow: hidden;
   }
 
-  /* Contenedores para las imágenes dentro de la diagonal */
   .hero-img-1, .hero-img-2 {
     position: absolute;
     inset: 0;
@@ -130,18 +129,17 @@
   }
 
   .hero-img-1 {
-    background-image: url('image/HERO 1.png');
+    background-image: url('image/HERO1.png'); /* Corregido sin espacio */
     z-index: 1;
     opacity: 1;
   }
 
   .hero-img-2 {
-    background-image: url('image/HERO 2.png');
+    background-image: url('image/HERO2.png'); /* Corregido sin espacio */
     z-index: 2;
     opacity: 0;
   }
 
-  /* Efecto Hover: Al pasar el mouse por el hero, se revela la segunda imagen */
   .hero:hover .hero-img-2 {
     opacity: 1;
   }
@@ -160,7 +158,6 @@
     pointer-events: none;
   }
 
-  /* Glowing corner accent */
   .hero-glow {
     position: absolute; right: 40%; top: 50%;
     transform: translate(50%, -50%);
@@ -245,9 +242,7 @@
   }
   .btn-ghost svg { width: 16px; height: 16px; fill: currentColor; }
 
-
-
-  /* ── EXPERIENCES / COURSES INTRO ── */
+  /* ── EXPERIENCES ── */
   .section-experiences {
     padding: 120px 48px 80px;
     text-align: center;
@@ -276,7 +271,6 @@
     line-height: 1.7; font-weight: 300;
   }
 
-  /* Experience scroll strip */
   .exp-strip {
     margin-top: 64px;
     display: grid;
@@ -289,7 +283,6 @@
     aspect-ratio: 4/3;
     background: var(--surface);
     cursor: pointer;
-    group: true;
   }
 
   .exp-card-bg {
@@ -298,18 +291,17 @@
     transition: transform .5s ease;
   }
 
-  /* Placeholder gradient backgrounds for each exp card */
+  /* Preparado con Degradados + Imágenes reales de fondo */
   .exp-card:nth-child(1) .exp-card-bg {
-    background: linear-gradient(135deg, #0d0d0d 0%, #1a2a0a 50%, #0a1a00 100%);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP1.png');
   }
   .exp-card:nth-child(2) .exp-card-bg {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a00 50%, #2a2000 100%);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP2.png');
   }
   .exp-card:nth-child(3) .exp-card-bg {
-    background: linear-gradient(135deg, #0d0d0d 0%, #0a1a0a 50%, #001a05 100%);
+    background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP3.png');
   }
 
-  /* Circuit pattern overlay */
   .exp-card-bg::after {
     content: '';
     position: absolute; inset: 0;
@@ -322,10 +314,10 @@
 
   .exp-card-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.3) 60%, transparent 100%);
     display: flex; flex-direction: column;
     justify-content: flex-end;
     padding: 28px;
+    text-align: left;
   }
 
   .exp-card-num {
@@ -334,14 +326,18 @@
     color: rgba(170,255,0,.12);
     line-height: 1;
     position: absolute; top: 16px; right: 20px;
+    transition: color .3s ease;
   }
+  .exp-card:hover .exp-card-num { color: rgba(170,255,0,.25); }
 
   .exp-card-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 26px; font-weight: 800;
     text-transform: uppercase; color: var(--white);
     line-height: 1.1;
+    transition: color .3s ease;
   }
+  .exp-card:hover .exp-card-title { color: var(--neon); }
 
   .exp-card-desc {
     font-size: 13px; color: var(--muted);
@@ -539,8 +535,6 @@
     flex-shrink: 0; margin-top: -8px;
   }
 
-  .sim-content {}
-
   .sim-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 24px; font-weight: 800;
@@ -664,7 +658,6 @@
     .hero-content { padding: 80px 24px 0; }
     .hero-diagonal { display: none; }
     .hero-glow { display: none; }
-    .hero-stats { gap: 24px; }
     .section-experiences,
     .section-courses,
     .section-sims,
@@ -730,8 +723,6 @@
         Ver en acción
       </a>
     </div>
-
-
   </div>
 </section>
 
@@ -783,7 +774,6 @@
   </div>
 
   <div class="courses-grid">
-
     <div class="course-card">
       <div class="course-badge">Nivel 01</div>
       <div class="course-name">Entry</div>
@@ -867,7 +857,6 @@
       </div>
       <a href="#contacto" class="course-cta">Comenzar →</a>
     </div>
-
   </div>
 </section>
 
