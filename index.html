@@ -129,17 +129,16 @@
     transition: opacity 0.5s ease;
   }
 
-  
   .hero-img-1 {
-    background-image: url('HERO 1.png');
+    background-image: url('image/HERO 1.png');
     z-index: 1;
     opacity: 1;
   }
 
   .hero-img-2 {
-    background-image: url('HERO 2.png');
+    background-image: url('image/HERO 2.png');
     z-index: 2;
-    opacity: 0; /* Oculta por defecto */
+    opacity: 0;
   }
 
   /* Efecto Hover: Al pasar el mouse por el hero, se revela la segunda imagen */
@@ -149,7 +148,7 @@
 
   .hero-diagonal-inner {
     position: absolute; inset: 0;
-    z-index: 3; /* Por encima de las imágenes para mantener la trama de líneas */
+    z-index: 3;
     background:
       repeating-linear-gradient(
         -45deg,
@@ -705,7 +704,6 @@
     <span class="speed-line" style="top:88%; animation-delay:1.8s; animation-duration:1.9s;"></span>
   </div>
 
-  <!-- Sección de la derecha modificada con las imágenes -->
   <div class="hero-diagonal">
     <div class="hero-img-1"></div>
     <div class="hero-img-2"></div>
