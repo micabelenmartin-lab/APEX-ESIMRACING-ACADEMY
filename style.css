@@ -1,4 +1,4 @@
-*, *::before, *::after { 
+* , *::before, *::after { 
   box-sizing: border-box; 
   margin: 0; 
   padding: 0; 
@@ -138,8 +138,9 @@ nav {
   opacity: 0;
 }
 
+/* Modificado para animación de parpadeo continuo automática al hacer hover */
 .hero:hover .hero-img-2 {
-  opacity: 1;
+  animation: glitch-image 4s infinite alternate;
 }
 
 .hero-diagonal-inner {
@@ -678,4 +679,10 @@ footer {
   .hero-lines::before, .hero-lines::after,
   .speed-line { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── KEYFRAMES PARA LA ANIMACIÓN DE PARPADEO DEL PILOTO ── */
+@keyframes glitch-image {
+  0%, 40%, 45%, 90%, 94% { opacity: 0; }
+  41%, 44%, 91%, 93%, 100% { opacity: 1; }
 }
