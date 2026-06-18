@@ -104,6 +104,7 @@
     100%{ transform: translateX(60%);  opacity: 0; }
   }
 
+  /* Extra speed lines via spans */
   .speed-line {
     position: absolute; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(170,255,0,.05), transparent);
@@ -123,12 +124,12 @@
     transition: background-image 0.5s ease-in-out;
   }
 
-  /* Efecto interactivo para cambiar al casco (HERO 2) */
+  /* Efecto interactivo para cambiar de imagen al pasar el mouse */
   .hero:hover .hero-image-container {
     background-image: url('HERO 2.jpg');
   }
 
-  /* Degradado oscuro para fundir la imagen con el fondo negro a la izquierda */
+  /* Degradado oscuro para fundir las imágenes con el fondo a la izquierda */
   .hero-image-container::before {
     content: '';
     position: absolute; inset: 0;
@@ -157,7 +158,7 @@
       );
   }
 
-  /* Glowing corner accent */
+  /* Glowing corner accent ajustado para encajar con el nuevo ancho */
   .hero-glow {
     position: absolute; left: 45%; top: 50%;
     transform: translate(-50%, -50%);
@@ -245,6 +246,8 @@
   }
   .btn-ghost svg { width: 16px; height: 16px; fill: currentColor; }
 
+
+
   /* ── EXPERIENCES / COURSES INTRO ── */
   .section-experiences {
     padding: 120px 48px 80px;
@@ -296,6 +299,7 @@
     transition: transform .5s ease;
   }
 
+  /* Placeholder gradient backgrounds for each exp card */
   .exp-card:nth-child(1) .exp-card-bg {
     background: linear-gradient(135deg, #0d0d0d 0%, #1a2a0a 50%, #0a1a00 100%);
   }
@@ -306,6 +310,7 @@
     background: linear-gradient(135deg, #0d0d0d 0%, #0a1a0a 50%, #001a05 100%);
   }
 
+  /* Circuit pattern overlay */
   .exp-card-bg::after {
     content: '';
     position: absolute; inset: 0;
@@ -660,6 +665,7 @@
     .hero-image-container::before { background: linear-gradient(to top, var(--black) 10%, rgba(10,10,10,0.7) 60%, var(--black) 100%); }
     .hero-diagonal { display: none; }
     .hero-glow { display: none; }
+    .hero-stats { gap: 24px; }
     .section-experiences,
     .section-courses,
     .section-sims,
@@ -692,13 +698,6 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-lines">
-    <span class="speed-line" style="top:18%; animation-delay:.3s; animation-duration:2s;"></span>
-    <span class="speed-line" style="top:42%; animation-delay:1.2s; animation-duration:2.6s;"></span>
-    <span class="speed-line" style="top:75%; animation-delay:.7s; animation-duration:2.2s;"></span>
-    <span class="speed-line" style="top:88%; animation-delay:1.8s; animation-duration:1.9s;"></span>
-  </div>
-
   <div class="hero-image-container">
     <div class="hero-diagonal">
       <div class="hero-diagonal-inner"></div>
@@ -706,6 +705,13 @@
   </div>
   
   <div class="hero-glow"></div>
+
+  <div class="hero-lines">
+    <span class="speed-line" style="top:18%; animation-delay:.3s; animation-duration:2s;"></span>
+    <span class="speed-line" style="top:42%; animation-delay:1.2s; animation-duration:2.6s;"></span>
+    <span class="speed-line" style="top:75%; animation-delay:.7s; animation-duration:2.2s;"></span>
+    <span class="speed-line" style="top:88%; animation-delay:1.8s; animation-duration:1.9s;"></span>
+  </div>
 
   <div class="hero-content">
     <div class="hero-eyebrow"><span></span>Sim Racing Profesional</div>
@@ -938,17 +944,29 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── PRECARGA DE IMÁGENES ──
+  // Precargamos la imagen secundaria del Hero para que el hover funcione instantáneamente sin parpadeos
+  const preloadHeroImage = new Image();
+  preloadHeroImage.src = 'HERO 2.jpg';
+
+  // ── SCROLL REVEAL ──
+  const observerOptions = {
+    root: null,
+    threshold: 0.12
+  };
+
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, observerOptions);
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(element => {
+    observer.observe(element);
+  });
 </script>
 </body>
 </html>
