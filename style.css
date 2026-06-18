@@ -1,4 +1,4 @@
-* , *::before, *::after { 
+*, *::before, *::after { 
   box-sizing: border-box; 
   margin: 0; 
   padding: 0; 
@@ -123,7 +123,6 @@ nav {
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 0.5s ease;
 }
 
 .hero-img-1 {
@@ -132,15 +131,17 @@ nav {
   opacity: 1;
 }
 
+/* Se cambia la transición a una muy rápida para el efecto parpadeo caótico */
 .hero-img-2 {
   background-image: url('image/HERO 2.png');
   z-index: 2;
   opacity: 0;
+  transition: opacity 0.05s steps(2, start);
 }
 
-/* Modificado para animación de parpadeo continuo automática al hacer hover */
-.hero:hover .hero-img-2 {
-  animation: glitch-image 4s infinite alternate;
+/* Esta clase se prenderá y apagará dinámicamente mediante el JS */
+.hero-img-2.active {
+  opacity: 1;
 }
 
 .hero-diagonal-inner {
@@ -679,10 +680,4 @@ footer {
   .hero-lines::before, .hero-lines::after,
   .speed-line { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-/* ── KEYFRAMES PARA LA ANIMACIÓN DE PARPADEO DEL PILOTO ── */
-@keyframes glitch-image {
-  0%, 40%, 45%, 90%, 94% { opacity: 0; }
-  41%, 44%, 91%, 93%, 100% { opacity: 1; }
 }
