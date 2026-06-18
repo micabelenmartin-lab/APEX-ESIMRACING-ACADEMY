@@ -1,44 +1,34 @@
-// Scroll reveal (Mantiene tu lógica original intacta)
+// 1. Scroll reveal (Mantiene tu lógica original intacta)
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+        }
+    });
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── EFECTO DE PARPADEO CONTINUO FIJADO ──
+// 2. Efecto de interacción Hero
 const heroSection = document.querySelector('.hero');
 const heroImg2 = document.querySelector('.hero-img-2');
-let isMoving = false;
 
 if (heroSection && heroImg2) {
-  
-  // Función para manejar el parpadeo de forma suave
-  const handleMouseMove = () => {
-    // Agregamos la clase que definimos en el CSS
-    heroImg2.classList.add('is-visible');
-    
-    // Si ya hay un temporizador, no hacemos nada, dejamos que el CSS controle la fluidez
-    // Si queremos el efecto "glitch" real, el JS solo debe "encender" la capa
-    isMoving = true;
-  };
+    // Usamos 'mouseenter' y 'mouseleave' para una detección más limpia
+    heroSection.addEventListener('mouseenter', () => {
+        heroImg2.style.opacity = '1';
+    });
 
-  heroSection.addEventListener('mousemove', () => {
-    heroImg2.classList.add('is-visible');
-    
-    // Reseteamos el "apagado" cada vez que detecta movimiento
-    clearTimeout(heroSection.timer);
-    heroSection.timer = setTimeout(() => {
-      heroImg2.classList.remove('is-visible');
-    }, 150); // Tiempo en milisegundos que se mantiene encendida la imagen 2
-  });
+    heroSection.addEventListener('mouseleave', () => {
+        heroImg2.style.opacity = '0';
+    });
 
-  heroSection.addEventListener('mouseleave', () => {
-    heroImg2.classList.remove('is-visible');
-    clearTimeout(heroSection.timer);
-  });
+    // Si quieres un efecto de parpadeo aleatorio, podrías añadir esto:
+    heroSection.addEventListener('mousemove', () => {
+        // Solo un pequeño ajuste para asegurar que siga visible
+        if (heroImg2.style.opacity === '0') {
+            heroImg2.style.opacity = '1';
+        }
+    });
 }
