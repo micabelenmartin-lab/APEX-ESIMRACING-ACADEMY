@@ -95,24 +95,31 @@ nav {
   overflow: hidden;
 }
  
-/* ── IMÁGENES HERO (fix: controladas por JS, sin animation) ── */
-.hero-img-1, .hero-img-2 {
+/* ── IMÁGENES HERO ── */
+/* img-1 es la base, siempre visible debajo.
+   img-2 está encima (z-index mayor) y se muestra/oculta con opacity.
+   El JS solo toca opacity de img-2 — nunca toca img-1. */
+.hero-img-1 {
   position: absolute;
   inset: 0;
+  background-image: url('image/HERO1.png');
   background-size: cover;
   background-position: center;
-  transition: opacity 0.8s ease;
   z-index: 1;
-}
- 
-.hero-img-1 {
-  background-image: url('image/HERO1.png');
   opacity: 1;
+  animation: none;
 }
- 
+
 .hero-img-2 {
+  position: absolute;
+  inset: 0;
   background-image: url('image/HERO2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
   opacity: 0;
+  transition: opacity 0.8s ease;
+  animation: none;
 }
  
 .hero-diagonal-inner { position: absolute; inset: 0; z-index: 3; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(170,255,0,.025) 40px, rgba(170,255,0,.025) 41px); pointer-events: none; }
@@ -160,4 +167,3 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
   .exp-strip, .courses-grid, .sims-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
- 
