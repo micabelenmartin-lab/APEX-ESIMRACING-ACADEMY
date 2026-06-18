@@ -113,8 +113,8 @@ nav {
   z-index: 1;
 }
 
-/* NUEVO: Capas para las dos imágenes del Hero */
-.hero-img-1, .hero-img-2 {
+
+.HERO 1.png , .HERO 2.png {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -123,16 +123,16 @@ nav {
 }
 
 
-.hero-img-1 {
-  background-image: url('HERO 1.jpg');
+.HERO 1.png {
+  background-image: url('image/PON_AQUI_EL_NOMBRE_DE_TU_FOTO_1.jpg');
   z-index: 1;
-  opacity: 1; /* Visible por defecto */
+  opacity: 1; 
 }
 
-.hero-img-2 {
-  background-image: url('HERO 2.jpg');
+.HERO 2.png {
+  background-image: url('image/PON_AQUI_EL_NOMBRE_DE_TU_FOTO_2.jpg');
   z-index: 2;
-  opacity: 0; /* Oculta al inicio */
+  opacity: 0; 
 }
 
 /* EFECTO HOVER: Muestra la segunda imagen al pasar el mouse por el Hero */
