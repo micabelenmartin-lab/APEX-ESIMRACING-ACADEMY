@@ -7,22 +7,16 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.12 });
- 
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
- 
+
 // ── Hero image cycle ──
-const img1 = document.querySelector('.hero-img-1');
+// img1 es la base fija (z-index 1), nunca se toca.
+// img2 está encima (z-index 2) y alterna entre opacity 0 y 1.
 const img2 = document.querySelector('.hero-img-2');
-let showingFirst = true;
- 
+let img2Visible = false;
+
 setInterval(() => {
-  if (showingFirst) {
-    img1.style.opacity = '0';
-    img2.style.opacity = '1';
-  } else {
-    img1.style.opacity = '1';
-    img2.style.opacity = '0';
-  }
-  showingFirst = !showingFirst;
+  img2Visible = !img2Visible;
+  img2.style.opacity = img2Visible ? '1' : '0';
 }, 4000);
- 
