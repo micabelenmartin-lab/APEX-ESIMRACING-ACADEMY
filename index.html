@@ -31,4 +31,49 @@
 
         /* ── HERO ── */
         .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
-        .hero-diagonal { position: absolute; right: -60px; top: 0; bottom
+        .hero-diagonal { 
+            position: absolute; right: -60px; top: 0; bottom: 0; width: 48%; 
+            background: var(--carbon); clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%); 
+            overflow: hidden; 
+        }
+        .hero-img-1, .hero-img-2 { 
+            position: absolute; inset: 0; background-size: cover; background-position: center; 
+            transition: opacity 0.5s ease; 
+        }
+        .hero-img-1 { background-image: url('image/HERO1.png'); z-index: 1; opacity: 1; }
+        .hero-img-2 { background-image: url('image/HERO2.png'); z-index: 2; opacity: 0; }
+        .hero:hover .hero-img-2 { opacity: 1; }
+
+        .hero-content { position: relative; z-index: 2; padding: 0 48px; max-width: 700px; }
+        .hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(72px, 10vw, 128px); font-weight: 900; line-height: .92; text-transform: uppercase; }
+        .hero-title .accent { color: var(--neon); font-style: italic; }
+
+        @media (max-width: 900px) {
+            .nav-links, .hero-diagonal { display: none; }
+            .hero-content { padding: 80px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">APEX</div>
+        <ul class="nav-links">
+            <li><a href="#">Experiencias</a></li>
+            <li><a href="#">Cursos</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Inscribirme</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-diagonal">
+            <div class="hero-img-1"></div>
+            <div class="hero-img-2"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">DOMINA<br><span class="accent">EL LÍMITE</span></h1>
+        </div>
+    </section>
+
+</body>
+</html>
