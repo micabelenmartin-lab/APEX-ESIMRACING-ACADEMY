@@ -113,8 +113,8 @@ nav {
   z-index: 1;
 }
 
-
-.HERO 1.png , .HERO 2.png {
+/* NUEVO: Capas para las dos imágenes del Hero */
+.hero-img-1, .hero-img-2 {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -122,15 +122,15 @@ nav {
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-.HERO 1.png {
-  background-image: url('image/PON_AQUI_EL_NOMBRE_DE_TU_FOTO_1.jpg');
+/* AQUÍ ES DONDE REEMPLAZAS CON TUS NOMBRES REALES */
+.hero-img-1 {
+  background-image: url('HERO 1 .png');
   z-index: 1;
   opacity: 1; 
 }
 
-.HERO 2.png {
-  background-image: url('image/PON_AQUI_EL_NOMBRE_DE_TU_FOTO_2.jpg');
+.hero-img-2 {
+  background-image: url('HERO 2.png');
   z-index: 2;
   opacity: 0; 
 }
@@ -139,7 +139,6 @@ nav {
 .hero:hover .hero-img-2 {
   opacity: 1;
 }
-
 /* Ajustado para mantener la trama de líneas por encima de las imágenes */
 .hero-diagonal-inner {
   position: absolute; inset: 0;
