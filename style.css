@@ -3,7 +3,7 @@
   margin: 0; 
   padding: 0; 
 }
-
+ 
 :root {
   --black:   #0A0A0A;
   --carbon:  #141414;
@@ -14,16 +14,16 @@
   --white:   #E8E8E8;
   --muted:   #888;
 }
-
+ 
 html { scroll-behavior: smooth; }
-
+ 
 body {
   background: var(--black);
   color: var(--white);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
-
+ 
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -35,7 +35,7 @@ nav {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
-
+ 
 .nav-logo {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 28px; font-weight: 900;
@@ -43,16 +43,16 @@ nav {
   color: var(--neon);
   text-shadow: 0 0 20px rgba(170,255,0,.5);
 }
-
+ 
 .nav-links { display: flex; gap: 36px; list-style: none; }
-
+ 
 .nav-links a {
   font-size: 12px; font-weight: 500; letter-spacing: .12em;
   text-transform: uppercase; color: var(--muted);
   text-decoration: none; transition: color .2s;
 }
 .nav-links a:hover { color: var(--neon); }
-
+ 
 .nav-cta {
   background: var(--neon); color: var(--black);
   font-size: 11px; font-weight: 700; letter-spacing: .14em;
@@ -66,7 +66,7 @@ nav {
   background: var(--yellow);
   box-shadow: 0 0 24px rgba(170,255,0,.5);
 }
-
+ 
 /* ── HERO ── */
 .hero {
   position: relative; min-height: 100vh;
@@ -74,18 +74,18 @@ nav {
   overflow: hidden;
   background: var(--black);
 }
-
+ 
 .hero-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .hero-lines::before, .hero-lines::after { content: ''; position: absolute; background: linear-gradient(90deg, transparent, rgba(170,255,0,.06), transparent); }
 .hero-lines::before { top: 28%; left: -100%; width: 300%; height: 1px; animation: speedline 2.4s ease-out infinite; }
 .hero-lines::after { top: 62%; left: -100%; width: 300%; height: 1px; animation: speedline 2.4s ease-out .8s infinite; }
-
+ 
 @keyframes speedline {
   0%  { transform: translateX(-20%); opacity: 0; }
   20% { opacity: 1; }
   100%{ transform: translateX(60%);  opacity: 0; }
 }
-
+ 
 .hero-diagonal {
   position: absolute; right: -60px; top: 0; bottom: 0;
   width: 48%;
@@ -94,29 +94,27 @@ nav {
   clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
 }
-
-/* ── IMÁGENES CÍCLICAS ── */
+ 
+/* ── IMÁGENES HERO (fix: controladas por JS, sin animation) ── */
 .hero-img-1, .hero-img-2 {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  animation: fade-cycle 10s infinite linear;
+  transition: opacity 0.8s ease;
   z-index: 1;
 }
-
-.hero-img-1 { background-image: url('image/HERO1.png'); }
-.hero-img-2 { background-image: url('image/HERO2.png'); animation-delay: 5s; }
-
-@keyframes fade-cycle {
-  0%, 45% { opacity: 1; visibility: visible; }
-  50%, 95% { opacity: 0; visibility: hidden; }
-  100% { opacity: 1; visibility: visible; }
+ 
+.hero-img-1 {
+  background-image: url('image/HERO1.png');
+  opacity: 1;
 }
-
-.hero:hover .hero-img-1,
-.hero:hover .hero-img-2 { animation-play-state: paused; }
-
+ 
+.hero-img-2 {
+  background-image: url('image/HERO2.png');
+  opacity: 0;
+}
+ 
 .hero-diagonal-inner { position: absolute; inset: 0; z-index: 3; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(170,255,0,.025) 40px, rgba(170,255,0,.025) 41px); pointer-events: none; }
 .hero-glow { position: absolute; right: 40%; top: 50%; transform: translate(50%, -50%); width: 2px; height: 60%; background: linear-gradient(to bottom, transparent, var(--neon), transparent); box-shadow: 0 0 30px var(--neon), 0 0 80px rgba(170,255,0,.3); z-index: 4; }
 .hero-content { position: relative; z-index: 2; padding: 0 48px; max-width: 700px; padding-top: 80px; }
@@ -130,7 +128,7 @@ nav {
 .btn-primary:hover { background: var(--yellow); box-shadow: 0 0 40px rgba(170,255,0,.6); transform: translateY(-2px); }
 .btn-ghost { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; color: var(--white); border: 1px solid var(--border); padding: 15px 30px; transition: all .25s; }
 .btn-ghost:hover { border-color: var(--neon); color: var(--neon); }
-
+ 
 /* ── SECCIONES RESTANTES ── */
 .section-experiences { padding: 120px 48px 80px; text-align: center; background: var(--black); }
 .exp-strip { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
@@ -140,20 +138,20 @@ nav {
 .exp-card:nth-child(2) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 100%), url('image/EXP 2.png'); }
 .exp-card:nth-child(3) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 100%), url('image/EXP 3.png'); }
 .exp-card:hover .exp-card-bg { transform: scale(1.06); }
-
+ 
 .section-courses { padding: 100px 48px; background: var(--carbon); }
 .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .course-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); padding: 36px 32px 40px; }
-
+ 
 .section-sims { padding: 100px 48px; background: var(--black); }
 .sims-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-
+ 
 .section-close { position: relative; padding: 120px 48px; background: var(--carbon); overflow: hidden; text-align: center; }
 footer { background: var(--black); border-top: 1px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-
+ 
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
+ 
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
@@ -162,3 +160,4 @@ footer { background: var(--black); border-top: 1px solid var(--border); padding:
   .exp-strip, .courses-grid, .sims-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
+ 
