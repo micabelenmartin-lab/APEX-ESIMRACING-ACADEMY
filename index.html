@@ -95,6 +95,7 @@
     background-image: url('image/HERO1.png');
     background-size: cover; background-position: center;
     z-index: 1; opacity: 1;
+    transition: opacity 0.8s ease;
   }
   .hero-img-2 {
     position: absolute; inset: 0;
@@ -457,13 +458,13 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Hero image cycle
-  // img1 es la base fija (z-index 1), nunca se toca.
-  // img2 esta encima (z-index 2), alterna opacity 0 y 1 cada 4 segundos.
+  // Hero image cycle — crossfade real entre img1 e img2
+  const img1 = document.querySelector('.hero-img-1');
   const img2 = document.querySelector('.hero-img-2');
   let img2Visible = false;
   setInterval(function() {
     img2Visible = !img2Visible;
+    img1.style.opacity = img2Visible ? '0' : '1';
     img2.style.opacity = img2Visible ? '1' : '0';
   }, 4000);
 </script>
