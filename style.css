@@ -108,13 +108,14 @@ nav {
   overflow: hidden;
 }
 
-/* ── CORRECCIÓN: IMÁGENES CÍCLICAS ── */
+/* ── CORRECCIÓN IMÁGENES CÍCLICAS ── */
 .hero-img-1, .hero-img-2 {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  animation: crossfade 10s infinite linear;
+  /* Animación constante de 10 segundos */
+  animation: fade-cycle 10s infinite linear;
 }
 
 .hero-img-1 {
@@ -125,10 +126,11 @@ nav {
 .hero-img-2 {
   background-image: url('image/HERO2.png');
   z-index: 2;
+  /* Inicia con retraso para lograr el efecto de alternancia */
   animation-delay: 5s;
 }
 
-@keyframes crossfade {
+@keyframes fade-cycle {
   0%, 45% { opacity: 1; }
   50%, 95% { opacity: 0; }
   100% { opacity: 1; }
@@ -138,7 +140,6 @@ nav {
 .hero:hover .hero-img-2 {
   animation-play-state: paused;
 }
-/* ───────────────────────────────────── */
 
 .hero-diagonal-inner {
   position: absolute; inset: 0;
@@ -231,13 +232,12 @@ nav {
   border-color: var(--neon); color: var(--neon);
 }
 
-/* ── SECCIONES RESTANTES (OMITIDAS PARA BREVEDAD, MANTIENEN TU LÓGICA) ── */
-/* (Aquí iría el resto de tu CSS original: section-experiences, courses, sims, close, footer) */
-
-@media (max-width: 900px) {
-  nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hero-content { padding: 80px 24px 0; }
-  .hero-diagonal { display: none; }
-  .hero-glow { display: none; }
-}
+/* ── SECCIONES (MANTIENEN TU LÓGICA ORIGINAL) ── */
+.section-experiences { padding: 120px 48px 80px; text-align: center; background: var(--black); }
+.section-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--neon); border: 1px solid rgba(170,255,0,.3); padding: 6px 16px; margin-bottom: 24px; }
+.section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(44px, 6vw, 80px); font-weight: 900; text-transform: uppercase; line-height: .95; letter-spacing: -.01em; color: var(--white); }
+.section-sub { font-size: 16px; color: var(--muted); max-width: 520px; margin: 20px auto 0; line-height: 1.7; font-weight: 300; }
+.exp-strip { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.exp-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--surface); cursor: pointer; }
+.exp-card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .5s ease; }
+.exp-card:nth-child(1) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0
