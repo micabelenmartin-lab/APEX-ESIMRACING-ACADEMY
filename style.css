@@ -74,7 +74,7 @@ nav {
 /* Speed lines */
 .hero-lines {
   position: absolute; inset: 0; pointer-events: none;
-  overflow: hidden;
+  overflow: hidden; z-index: 3;
 }
 .hero-lines::before, .hero-lines::after {
   content: '';
@@ -103,13 +103,39 @@ nav {
   animation: speedline 2.4s ease-out infinite;
 }
 
-/* Diagonal accent bar */
+/* Contenedor de imágenes en el Hero */
+.hero-image-container {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 55%;
+  z-index: 1;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-image: url('HERO 1.jpg');
+  transition: background-image 0.5s ease-in-out;
+}
+
+/* Efecto interactivo para cambiar de imagen al pasar el mouse */
+.hero:hover .hero-image-container {
+  background-image: url('HERO 2.jpg');
+}
+
+/* Degradado oscuro para fundir las imágenes con el fondo a la izquierda */
+.hero-image-container::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--black) 0%, rgba(10,10,10,0.4) 40%, transparent 100%);
+  z-index: 2;
+}
+
+/* Diagonal accent bar adaptada sobre la imagen */
 .hero-diagonal {
   position: absolute; right: -60px; top: 0; bottom: 0;
-  width: 48%;
-  background: var(--carbon);
+  width: 100%;
   clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero-diagonal-inner {
@@ -119,22 +145,23 @@ nav {
       -45deg,
       transparent,
       transparent 40px,
-      rgba(170,255,0,.025) 40px,
-      rgba(170,255,0,.025) 41px
+      rgba(170,255,0,.015) 40px,
+      rgba(170,255,0,.015) 41px
     );
 }
 
-/* Glowing corner accent */
+/* Glowing corner accent ajustado para encajar con el nuevo ancho */
 .hero-glow {
-  position: absolute; right: 40%; top: 50%;
-  transform: translate(50%, -50%);
+  position: absolute; left: 45%; top: 50%;
+  transform: translate(-50%, -50%);
   width: 2px; height: 60%;
   background: linear-gradient(to bottom, transparent, var(--neon), transparent);
   box-shadow: 0 0 30px var(--neon), 0 0 80px rgba(170,255,0,.3);
+  z-index: 2;
 }
 
 .hero-content {
-  position: relative; z-index: 2;
+  position: relative; z-index: 4;
   padding: 0 48px;
   max-width: 700px;
   padding-top: 80px;
@@ -171,6 +198,7 @@ nav {
   color: var(--muted);
   max-width: 440px;
   font-weight: 300;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero-actions {
@@ -202,6 +230,8 @@ nav {
   border: 1px solid var(--border);
   padding: 15px 30px;
   transition: all .25s;
+  background: rgba(10,10,10,0.5);
+  backdrop-filter: blur(4px);
 }
 .btn-ghost:hover {
   border-color: var(--neon); color: var(--neon);
@@ -215,6 +245,7 @@ nav {
   padding: 120px 48px 80px;
   text-align: center;
   background: var(--black);
+  position: relative; z-index: 5;
 }
 
 .section-tag {
@@ -252,7 +283,6 @@ nav {
   aspect-ratio: 4/3;
   background: var(--surface);
   cursor: pointer;
-  group: true;
 }
 
 .exp-card-bg {
@@ -502,8 +532,6 @@ nav {
   flex-shrink: 0; margin-top: -8px;
 }
 
-.sim-content {}
-
 .sim-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 24px; font-weight: 800;
@@ -625,6 +653,8 @@ footer {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
   .hero-content { padding: 80px 24px 0; }
+  .hero-image-container { width: 100%; opacity: 0.35; }
+  .hero-image-container::before { background: linear-gradient(to top, var(--black) 10%, rgba(10,10,10,0.7) 60%, var(--black) 100%); }
   .hero-diagonal { display: none; }
   .hero-glow { display: none; }
   .hero-stats { gap: 24px; }
