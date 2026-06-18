@@ -28,18 +28,14 @@
     overflow-x: hidden;
   }
 
-  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px;
-    height: 64px;
+    padding: 0 48px; height: 64px;
     background: rgba(10,10,10,.88);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-
   .nav-logo {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 28px; font-weight: 900;
@@ -47,16 +43,13 @@
     color: var(--neon);
     text-shadow: 0 0 20px rgba(170,255,0,.5);
   }
-
   .nav-links { display: flex; gap: 36px; list-style: none; }
-
   .nav-links a {
     font-size: 12px; font-weight: 500; letter-spacing: .12em;
     text-transform: uppercase; color: var(--muted);
     text-decoration: none; transition: color .2s;
   }
   .nav-links a:hover { color: var(--neon); }
-
   .nav-cta {
     background: var(--neon); color: var(--black);
     font-size: 11px; font-weight: 700; letter-spacing: .14em;
@@ -65,66 +58,49 @@
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
     transition: background .2s, box-shadow .2s;
   }
-  .nav-cta:hover {
-    background: var(--yellow);
-    box-shadow: 0 0 24px rgba(170,255,0,.5);
-  }
+  .nav-cta:hover { background: var(--yellow); box-shadow: 0 0 24px rgba(170,255,0,.5); }
 
-  /* ── HERO ── */
   .hero {
     position: relative; min-height: 100vh;
     display: flex; align-items: center;
-    overflow: hidden;
-    background: var(--black);
+    overflow: hidden; background: var(--black);
   }
-
   .hero-lines { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .hero-lines::before, .hero-lines::after { content: ''; position: absolute; background: linear-gradient(90deg, transparent, rgba(170,255,0,.06), transparent); }
+  .hero-lines::before, .hero-lines::after {
+    content: ''; position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(170,255,0,.06), transparent);
+  }
   .hero-lines::before { top: 28%; left: -100%; width: 300%; height: 1px; animation: speedline 2.4s ease-out infinite; }
   .hero-lines::after { top: 62%; left: -100%; width: 300%; height: 1px; animation: speedline 2.4s ease-out .8s infinite; }
-
   .speed-line {
     position: absolute; height: 1px;
     background: linear-gradient(90deg, transparent, rgba(170,255,0,.05), transparent);
     animation: speedline 2.4s ease-out infinite;
   }
-
   @keyframes speedline {
     0%  { transform: translateX(-20%); opacity: 0; }
     20% { opacity: 1; }
-    100%{ transform: translateX(60%);  opacity: 0; }
+    100%{ transform: translateX(60%); opacity: 0; }
   }
 
   .hero-diagonal {
     position: absolute; right: -60px; top: 0; bottom: 0;
-    width: 48%;
-    background: var(--carbon);
+    width: 48%; background: var(--carbon);
     clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
     overflow: hidden;
   }
 
-  /* ── IMÁGENES HERO ──
-     img-1: base fija, siempre visible (z-index 1), nunca la toca el JS.
-     img-2: encima (z-index 2), alterna opacity 0/1 via JS.
-     NO hay .hero:hover ni animation en ninguna de las dos. */
   .hero-img-1 {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image: url('image/HERO1.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-    opacity: 1;
+    background-size: cover; background-position: center;
+    z-index: 1; opacity: 1;
   }
-
   .hero-img-2 {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image: url('image/HERO2.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 2;
-    opacity: 0;
+    background-size: cover; background-position: center;
+    z-index: 2; opacity: 0;
     transition: opacity 0.8s ease;
   }
 
@@ -133,7 +109,6 @@
     background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(170,255,0,.025) 40px, rgba(170,255,0,.025) 41px);
     pointer-events: none;
   }
-
   .hero-glow {
     position: absolute; right: 40%; top: 50%;
     transform: translate(50%, -50%);
@@ -142,36 +117,24 @@
     box-shadow: 0 0 30px var(--neon), 0 0 80px rgba(170,255,0,.3);
     z-index: 4;
   }
-
   .hero-content {
     position: relative; z-index: 2;
-    padding: 0 48px;
-    max-width: 700px;
-    padding-top: 80px;
+    padding: 80px 48px 0; max-width: 700px;
   }
-
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 11px; font-weight: 600; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--neon);
-    margin-bottom: 28px;
+    text-transform: uppercase; color: var(--neon); margin-bottom: 28px;
   }
   .hero-eyebrow span { display: inline-block; width: 32px; height: 1px; background: var(--neon); }
-
   .hero-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: clamp(72px, 10vw, 128px);
     font-weight: 900; line-height: .92;
-    text-transform: uppercase; letter-spacing: -.01em;
-    color: var(--white);
+    text-transform: uppercase; letter-spacing: -.01em; color: var(--white);
   }
   .hero-title .accent { color: var(--neon); text-shadow: 0 0 40px rgba(170,255,0,.4); font-style: italic; }
-
-  .hero-body {
-    margin-top: 28px; font-size: 16px; line-height: 1.7;
-    color: var(--muted); max-width: 440px; font-weight: 300;
-  }
-
+  .hero-body { margin-top: 28px; font-size: 16px; line-height: 1.7; color: var(--muted); max-width: 440px; font-weight: 300; }
   .hero-actions { margin-top: 44px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 
   .btn-primary {
@@ -182,7 +145,6 @@
     transition: all .25s;
   }
   .btn-primary:hover { background: var(--yellow); box-shadow: 0 0 40px rgba(170,255,0,.6); transform: translateY(-2px); }
-
   .btn-ghost {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; font-weight: 500; letter-spacing: .14em;
@@ -192,82 +154,54 @@
   .btn-ghost:hover { border-color: var(--neon); color: var(--neon); }
   .btn-ghost svg { width: 16px; height: 16px; fill: currentColor; }
 
-  /* ── EXPERIENCES ── */
   .section-experiences { padding: 120px 48px 80px; text-align: center; background: var(--black); }
-
   .section-tag {
     display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .22em;
     text-transform: uppercase; color: var(--neon);
     border: 1px solid rgba(170,255,0,.3); padding: 6px 16px; margin-bottom: 24px;
   }
-
   .section-title {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: clamp(44px, 6vw, 80px); font-weight: 900;
     text-transform: uppercase; line-height: .95; letter-spacing: -.01em; color: var(--white);
   }
-
   .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; margin: 20px auto 0; line-height: 1.7; font-weight: 300; }
-
   .exp-strip { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-
   .exp-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--surface); cursor: pointer; }
-
   .exp-card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .5s ease; }
-
   .exp-card:nth-child(1) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP1.png'); }
   .exp-card:nth-child(2) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP2.png'); }
   .exp-card:nth-child(3) .exp-card-bg { background-image: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%), url('image/EXP3.png'); }
-
-  .exp-card-bg::after {
-    content: ''; position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(170,255,0,.03) 40px, rgba(170,255,0,.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(170,255,0,.03) 40px, rgba(170,255,0,.03) 41px);
-  }
-
   .exp-card:hover .exp-card-bg { transform: scale(1.06); }
-
   .exp-card-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 28px; text-align: left; }
-
   .exp-card-num { font-family: 'Barlow Condensed', sans-serif; font-size: 56px; font-weight: 900; color: rgba(170,255,0,.12); line-height: 1; position: absolute; top: 16px; right: 20px; transition: color .3s ease; }
   .exp-card:hover .exp-card-num { color: rgba(170,255,0,.25); }
-
   .exp-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1.1; transition: color .3s ease; }
   .exp-card:hover .exp-card-title { color: var(--neon); }
-
   .exp-card-desc { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
-
   .exp-card-bar { width: 0; height: 2px; background: var(--neon); margin-top: 14px; transition: width .4s ease; box-shadow: 0 0 8px var(--neon); }
   .exp-card:hover .exp-card-bar { width: 48px; }
 
-  /* ── COURSES ── */
   .section-courses { padding: 100px 48px; background: var(--carbon); }
-
   .courses-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
-
   .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-
   .course-card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); padding: 36px 32px 40px; transition: border-color .3s, transform .3s; }
   .course-card:hover { border-color: var(--neon); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(170,255,0,.08); }
   .course-card.featured { border-color: rgba(170,255,0,.4); background: linear-gradient(160deg, #1a2200 0%, var(--surface) 60%); }
-
   .course-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 24px; }
   .course-card:nth-child(1) .course-badge { background: rgba(255,255,255,.07); color: var(--muted); }
   .course-card.featured .course-badge { background: var(--neon); color: var(--black); }
   .course-card:nth-child(3) .course-badge { background: rgba(255,229,0,.1); color: var(--yellow); border: 1px solid rgba(255,229,0,.3); }
-
   .course-name { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 900; text-transform: uppercase; color: var(--white); line-height: 1; }
   .course-tagline { font-size: 13px; color: var(--muted); margin-top: 8px; font-weight: 300; }
   .course-divider { width: 100%; height: 1px; background: var(--border); margin: 28px 0; }
-
   .course-feature { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
   .course-feature-dot { width: 6px; height: 6px; background: var(--neon); flex-shrink: 0; margin-top: 5px; box-shadow: 0 0 6px var(--neon); }
   .course-card:nth-child(3) .course-feature-dot { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
   .course-feature-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
   .course-price { margin-top: 36px; display: flex; align-items: flex-end; gap: 6px; }
   .price-amount { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 800; color: var(--white); line-height: 1; }
   .price-period { font-size: 12px; color: var(--muted); padding-bottom: 6px; }
-
   .course-cta { display: block; text-align: center; margin-top: 24px; padding: 14px; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; transition: all .25s; }
   .course-card:nth-child(1) .course-cta { border: 1px solid var(--border); color: var(--white); }
   .course-card:nth-child(1) .course-cta:hover { border-color: var(--neon); color: var(--neon); }
@@ -276,11 +210,9 @@
   .course-card:nth-child(3) .course-cta { border: 1px solid rgba(255,229,0,.4); color: var(--yellow); }
   .course-card:nth-child(3) .course-cta:hover { background: rgba(255,229,0,.08); }
 
-  /* ── SIMULATORS ── */
   .section-sims { padding: 100px 48px; background: var(--black); }
   .sims-header { text-align: center; margin-bottom: 72px; }
   .sims-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-
   .sim-item { background: var(--surface); border: 1px solid var(--border); padding: 44px 40px; display: flex; gap: 28px; align-items: flex-start; transition: border-color .3s; }
   .sim-item:hover { border-color: rgba(170,255,0,.3); }
   .sim-num { font-family: 'Barlow Condensed', sans-serif; font-size: 72px; font-weight: 900; color: rgba(170,255,0,.08); line-height: 1; flex-shrink: 0; margin-top: -8px; }
@@ -288,7 +220,6 @@
   .sim-text { font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
   .sim-tag { display: inline-block; margin-top: 16px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--neon); }
 
-  /* ── CLOSE ── */
   .section-close { position: relative; padding: 120px 48px; background: var(--carbon); overflow: hidden; text-align: center; }
   .close-bg-lines { position: absolute; inset: 0; pointer-events: none; }
   .close-bg-lines::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(170,255,0,.06); animation: pulse 3s ease-in-out infinite; }
@@ -300,7 +231,6 @@
   .close-body { font-size: 16px; color: var(--muted); max-width: 480px; margin: 24px auto 0; line-height: 1.7; font-weight: 300; }
   .close-actions { display: flex; justify-content: center; gap: 16px; margin-top: 52px; flex-wrap: wrap; }
 
-  /* ── FOOTER ── */
   footer { background: var(--black); border-top: 1px solid var(--border); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
   .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; color: var(--neon); }
   .footer-copy { font-size: 12px; color: var(--muted); }
@@ -308,11 +238,9 @@
   .footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: .1em; text-transform: uppercase; transition: color .2s; }
   .footer-links a:hover { color: var(--neon); }
 
-  /* ── SCROLL REVEAL ── */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     .nav-links { display: none; }
@@ -325,11 +253,6 @@
     .courses-header { flex-direction: column; align-items: flex-start; }
     .sims-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; align-items: flex-start; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-lines::before, .hero-lines::after, .speed-line { animation: none; }
-    .reveal { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
@@ -353,23 +276,16 @@
     <span class="speed-line" style="top:75%; animation-delay:.7s; animation-duration:2.2s;"></span>
     <span class="speed-line" style="top:88%; animation-delay:1.8s; animation-duration:1.9s;"></span>
   </div>
-
   <div class="hero-diagonal">
     <div class="hero-img-1"></div>
     <div class="hero-img-2"></div>
     <div class="hero-diagonal-inner"></div>
   </div>
   <div class="hero-glow"></div>
-
   <div class="hero-content">
     <div class="hero-eyebrow"><span></span>Sim Racing Profesional</div>
-    <h1 class="hero-title">
-      DOMINA<br>
-      EL <span class="accent">LÍMITE</span>
-    </h1>
-    <p class="hero-body">
-      APEX no es un juego. Es el sistema de entrenamiento de sim racing más avanzado de Latinoamérica. Tecnología de pilotos reales. Metodología de élite. Resultados que se miden en el asfalto.
-    </p>
+    <h1 class="hero-title">DOMINA<br>EL <span class="accent">LÍMITE</span></h1>
+    <p class="hero-body">APEX no es un juego. Es el sistema de entrenamiento de sim racing más avanzado de Latinoamérica. Tecnología de pilotos reales. Metodología de élite. Resultados que se miden en el asfalto.</p>
     <div class="hero-actions">
       <a href="#cursos" class="btn-primary">Ver Programas</a>
       <a href="#experiencias" class="btn-ghost">
@@ -421,9 +337,7 @@
       <div class="section-tag">Programas</div>
       <h2 class="section-title">ELIGE TU<br>NIVEL</h2>
     </div>
-    <p style="max-width:320px; color:var(--muted); font-size:14px; line-height:1.7; font-weight:300;">
-      Cada programa está diseñado por ex-pilotos de categorías internacionales. No hay atajos. Hay método.
-    </p>
+    <p style="max-width:320px; color:var(--muted); font-size:14px; line-height:1.7; font-weight:300;">Cada programa está diseñado por ex-pilotos de categorías internacionales. No hay atajos. Hay método.</p>
   </div>
   <div class="courses-grid">
     <div class="course-card">
@@ -532,7 +446,7 @@
 </footer>
 
 <script>
-  // ── Scroll reveal ──
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -541,16 +455,14 @@
       }
     });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── Hero image cycle ──
+  // Hero image cycle
   // img1 es la base fija (z-index 1), nunca se toca.
-  // img2 está encima (z-index 2), alterna opacity 0 → 1 → 0 cada 4 segundos.
+  // img2 esta encima (z-index 2), alterna opacity 0 y 1 cada 4 segundos.
   const img2 = document.querySelector('.hero-img-2');
   let img2Visible = false;
-
-  setInterval(() => {
+  setInterval(function() {
     img2Visible = !img2Visible;
     img2.style.opacity = img2Visible ? '1' : '0';
   }, 4000);
