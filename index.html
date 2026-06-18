@@ -111,7 +111,7 @@
     animation: speedline 2.4s ease-out infinite;
   }
 
-  /* Diagonal accent bar */
+  /* Diagonal accent bar con imágenes integradas */
   .hero-diagonal {
     position: absolute; right: -60px; top: 0; bottom: 0;
     width: 48%;
@@ -120,8 +120,36 @@
     overflow: hidden;
   }
 
+  /* Contenedores para las imágenes dentro de la diagonal */
+  .hero-img-1, .hero-img-2 {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease;
+  }
+
+  
+  .hero-img-1 {
+    background-image: url('HERO 1.jpg');
+    z-index: 1;
+    opacity: 1;
+  }
+
+  .hero-img-2 {
+    background-image: url('HERO 2.jpg');
+    z-index: 2;
+    opacity: 0; /* Oculta por defecto */
+  }
+
+  /* Efecto Hover: Al pasar el mouse por el hero, se revela la segunda imagen */
+  .hero:hover .hero-img-2 {
+    opacity: 1;
+  }
+
   .hero-diagonal-inner {
     position: absolute; inset: 0;
+    z-index: 3; /* Por encima de las imágenes para mantener la trama de líneas */
     background:
       repeating-linear-gradient(
         -45deg,
@@ -130,6 +158,7 @@
         rgba(170,255,0,.025) 40px,
         rgba(170,255,0,.025) 41px
       );
+    pointer-events: none;
   }
 
   /* Glowing corner accent */
@@ -139,6 +168,7 @@
     width: 2px; height: 60%;
     background: linear-gradient(to bottom, transparent, var(--neon), transparent);
     box-shadow: 0 0 30px var(--neon), 0 0 80px rgba(170,255,0,.3);
+    z-index: 4;
   }
 
   .hero-content {
@@ -675,7 +705,10 @@
     <span class="speed-line" style="top:88%; animation-delay:1.8s; animation-duration:1.9s;"></span>
   </div>
 
+  <!-- Sección de la derecha modificada con las imágenes -->
   <div class="hero-diagonal">
+    <div class="hero-img-1"></div>
+    <div class="hero-img-2"></div>
     <div class="hero-diagonal-inner"></div>
   </div>
   <div class="hero-glow"></div>
